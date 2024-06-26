@@ -42,8 +42,6 @@ function Scene() {
   const { innerWidth, innerHeight, devicePixelRatio } = useSize();
   const flagShaderRef = useRef(null);
 
-  console.log("Parent rendered");
-
   const clock = new THREE.Clock();
   const tick = () => {
     const elapsedTime = clock.getElapsedTime();

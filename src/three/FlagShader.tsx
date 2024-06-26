@@ -7,6 +7,10 @@ import { forwardRef, useImperativeHandle } from "react";
 
 const FlagShader = forwardRef((props: IObjectProps, ref) => {
   const { scene } = props;
+  const texture = new THREE.TextureLoader();
+  texture.load("flag-french.jpg");
+
+  console.log(texture);
 
   const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
   const material = new THREE.RawShaderMaterial({
@@ -16,6 +20,8 @@ const FlagShader = forwardRef((props: IObjectProps, ref) => {
     uniforms: {
       uFrequency: { value: new THREE.Vector2(10, 5) },
       uTime: { value: 0 },
+      uColor: { value: new THREE.Color("orange") },
+      uTexture: { value: texture },
     },
   });
 
@@ -30,7 +36,6 @@ const FlagShader = forwardRef((props: IObjectProps, ref) => {
 
   useImperativeHandle(ref, () => ({
     updateTime: (time: number) => {
-      console.log("aki");
       material.uniforms.uTime.value = time;
     },
   }));
