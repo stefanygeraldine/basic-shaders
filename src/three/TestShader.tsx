@@ -3,7 +3,7 @@ import { IObjectProps } from "../types.ts";
 import testVertexShader from "../shaders/test/vertex.glsl";
 import testFragmentShader from "../shaders/test/fragment.glsl";
 
-const Model1 = (props: IObjectProps) => {
+const TestShader = (props: IObjectProps) => {
   const { scene } = props;
 
   const geometry = new THREE.PlaneGeometry(10, 10, 10, 10);
@@ -23,4 +23,4 @@ const Model1 = (props: IObjectProps) => {
   scene.add(mesh);
 };
 
-export default Model1;
+export default TestShader;

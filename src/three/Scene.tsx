@@ -1,10 +1,11 @@
-import {  useEffect} from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-import Model1 from "./Model1.tsx";
+import TestShader from "./TestShader.tsx";
+import FlagShader from "./FlagShader.tsx";
 import EnvironmentMap from "./EnvironmentMap.tsx";
 
 import useSize from "../hooks/useSize.ts";
@@ -30,8 +31,8 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 camera.position.x = 0;
-camera.position.y = 8;
-camera.position.z = 10;
+camera.position.y = 1;
+camera.position.z = 1;
 groupCamera.add(camera);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -39,29 +40,24 @@ controls.enableDamping = true;
 
 function Scene() {
   const { innerWidth, innerHeight, devicePixelRatio } = useSize();
+  const flagShaderRef = useRef(null);
 
   console.log("Parent rendered");
 
- // const clock = new THREE.Clock();
-  //let oldElapsedTime = 0;
+  const clock = new THREE.Clock();
   const tick = () => {
-    //const elapsedTime = clock.getElapsedTime();
-    //const deltaTime = elapsedTime - oldElapsedTime;
-    //oldElapsedTime = elapsedTime;
+    const elapsedTime = clock.getElapsedTime();
 
     // Update controls
     controls.update();
 
+    if (flagShaderRef.current) {
+      flagShaderRef.current.updateTime(elapsedTime);
+    }
+
     renderer.render(scene, camera);
     requestAnimationFrame(tick);
   };
-  /*
-  const gui = new dat.GUI();
-  const cameraFolder = gui.addFolder("Camera");
-  cameraFolder.add(camera.position, "x", -10, 10);
-  cameraFolder.add(camera.position, "y", -10, 10);
-  cameraFolder.add(camera.position, "z", 0, 20);
- */
 
   useEffect(() => {
     tick();
@@ -79,8 +75,7 @@ function Scene() {
 
   return (
     <>
-      <Model1 scene={scene} />
-      <EnvironmentMap scene={scene} />
+      <FlagShader scene={scene} ref={flagShaderRef} />
     </>
   );
 }
