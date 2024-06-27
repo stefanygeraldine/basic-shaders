@@ -6,23 +6,10 @@
 
 ![Project Screenshot](public/img_1.png)
 
-# Three.js Environment Map Practice
+# Basic Practice of Shaders with Three.js
 
-This project is a practice exercise using Three.js to create and implement an environment map. The environment map technique is often used to add realistic reflections and refractions to 3D objects in a scene, enhancing the overall visual quality and realism.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
+This project demonstrates a basic practice of using vertex and fragment shaders with Three.js. Shaders are small programs that run on the GPU and are used to control the rendering of graphics. By using shaders, you can create complex visual effects that would be difficult or impossible to achieve with standard Three.js materials.
 
 ## Introduction
 
-The purpose of this project is to practice and demonstrate the use of environment maps in Three.js. An environment map is a technique used in 3D graphics to simulate reflections on surfaces. By mapping a texture onto the scene's background, objects can reflect their surroundings, making them appear more realistic.
-
-## Features
-
-- Set up a basic Three.js scene with a camera and renderer.
-- Create a cube map texture to be used as the environment map.
-- Apply the environment map to various materials and geometries.
-- Enable reflections and refractions on 3D objects.
-- Interactive controls to explore the scene and observe the effects of the environment map.
+Shaders are written in GLSL (OpenGL Shading Language) and can be used to control the vertex and fragment processing stages of the rendering pipeline. In this project, we will create simple vertex and fragment shaders that animate a flag waving effect on a plane geometry.

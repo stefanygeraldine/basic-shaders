@@ -4,11 +4,13 @@ import * as THREE from "three";
 // @ts-expect-error
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-import TestShader from "./TestShader.tsx";
 import FlagShader from "./FlagShader.tsx";
-import EnvironmentMap from "./EnvironmentMap.tsx";
 
 import useSize from "../hooks/useSize.ts";
+
+interface FlagShader {
+  updateTime: (elapsedTime: number) => void;
+}
 
 const scene = new THREE.Scene();
 // Canvas
@@ -40,7 +42,7 @@ controls.enableDamping = true;
 
 function Scene() {
   const { innerWidth, innerHeight, devicePixelRatio } = useSize();
-  const flagShaderRef = useRef(null);
+  const flagShaderRef = useRef<FlagShader | null>(null);
 
   const clock = new THREE.Clock();
   const tick = () => {

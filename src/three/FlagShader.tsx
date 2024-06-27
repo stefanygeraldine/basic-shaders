@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import * as dat from "dat.gui";
 import { IObjectProps } from "../types.ts";
-import testVertexShader from "../shaders/flag/vertex.glsl";
-import testFragmentShader from "../shaders/flag/fragment.glsl";
+import flagVertexShader from "../shaders/flag/vertex.glsl";
+import flagFragmentShader from "../shaders/flag/fragment.glsl";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import MyTexture from "../assets/textures/gradients/texture.png";
 
@@ -14,8 +14,8 @@ const FlagShader = forwardRef((props: IObjectProps, ref) => {
   textureLoader.load(MyTexture, (texture) => {
     const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
     const material = new THREE.RawShaderMaterial({
-      vertexShader: testVertexShader,
-      fragmentShader: testFragmentShader,
+      vertexShader: flagVertexShader,
+      fragmentShader: flagFragmentShader,
       side: THREE.DoubleSide,
       uniforms: {
         uFrequency: { value: new THREE.Vector2(10, 5) },
