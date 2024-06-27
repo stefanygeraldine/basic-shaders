@@ -2,7 +2,7 @@
 
 
 
-- [https://stefanygeraldine.github.io/threejs-envoirement-map/](https://stefanygeraldine.github.io/threejs-envoirement-map/)
+- [https://stefanygeraldine.github.io/basic-shaders/](https://stefanygeraldine.github.io/basic-shaders/)
 
 ![Project Screenshot](public/img_1.png)
 
